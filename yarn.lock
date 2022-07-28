@@ -364,6 +364,14 @@
     "@types/fs-extra" "^9.0.12"
     "@types/lru-cache" "^5.1.1"
 
+"@vitebook/markdown-shiki@^0.100.5":
+  version "0.100.5"
+  resolved "https://registry.yarnpkg.com/@vitebook/markdown-shiki/-/markdown-shiki-0.100.5.tgz#bb0e343d6e9237b65ecd0e33545661d9023e25b9"
+  integrity sha512-FuFMUU28tEbPZd0NPmO/Sip8cMFhC6RNtAFL7/7NLv+iwu4ifE8fmrUF2Ix/GhqgBOl8F+qPItppyLR86Vc4JA==
+  dependencies:
+    "@vitebook/markdown" "0.100.5"
+    shiki "^0.9.11"
+
 "@vitebook/markdown-svelte@^0.100.5":
   version "0.100.5"
   resolved "https://registry.yarnpkg.com/@vitebook/markdown-svelte/-/markdown-svelte-0.100.5.tgz#53cce9d09cc0baf765a744957670ebf1c149ede8"
@@ -1404,6 +1412,11 @@ json-stable-stringify-without-jsonify@^1.0.1:
   resolved "https://registry.yarnpkg.com/json-stable-stringify-without-jsonify/-/json-stable-stringify-without-jsonify-1.0.1.tgz#9db7b59496ad3f3cfef30a75142d2d930ad72651"
   integrity sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==
 
+jsonc-parser@^3.0.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/jsonc-parser/-/jsonc-parser-3.1.0.tgz#73b8f0e5c940b83d03476bc2e51a20ef0932615d"
+  integrity sha512-DRf0QjnNeCUds3xTjKlQQ3DpJD51GvDjJfnxUVWg6PZTo2otSm+slzNAxU/35hF8/oJIKoG9slq30JYOsF2azg==
+
 just-debounce-it@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/just-debounce-it/-/just-debounce-it-3.0.1.tgz#8c8a4c9327c9523366ec79ac9a959a938153bd2f"
@@ -1987,6 +2000,15 @@ shebang-regex@^3.0.0:
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-3.0.0.tgz#ae16f1644d873ecad843b0307b143362d4c42172"
   integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
 
+shiki@^0.9.11:
+  version "0.9.15"
+  resolved "https://registry.yarnpkg.com/shiki/-/shiki-0.9.15.tgz#2481b46155364f236651319d2c18e329ead6fa44"
+  integrity sha512-/Y0z9IzhJ8nD9nbceORCqu6NgT9X6I8Fk8c3SICHI5NbZRLdZYFaB233gwct9sU0vvSypyaL/qaKvzyQGJBZSw==
+  dependencies:
+    jsonc-parser "^3.0.0"
+    vscode-oniguruma "^1.6.1"
+    vscode-textmate "5.2.0"
+
 signal-exit@^3.0.0:
   version "3.0.7"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.7.tgz#a9a1767f8af84155114eaabd73f99273c8f59ad9"
@@ -2268,6 +2290,16 @@ vite@^3.0.0:
     rollup "^2.75.6"
   optionalDependencies:
     fsevents "~2.3.2"
+
+vscode-oniguruma@^1.6.1:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/vscode-oniguruma/-/vscode-oniguruma-1.6.2.tgz#aeb9771a2f1dbfc9083c8a7fdd9cccaa3f386607"
+  integrity sha512-KH8+KKov5eS/9WhofZR8M8dMHWN2gTxjMsG4jd04YhpbPR91fUj7rYQ2/XjeHCJWbg7X++ApRIU9NUwM2vTvLA==
+
+vscode-textmate@5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/vscode-textmate/-/vscode-textmate-5.2.0.tgz#01f01760a391e8222fe4f33fbccbd1ad71aed74e"
+  integrity sha512-Uw5ooOQxRASHgu6C7GVvUxisKXfSgW4oFlO+aa+PAkgmH89O3CXxEEzNRNtHSqtXFTl0nAC1uYj0GMSH27uwtQ==
 
 webidl-conversions@^3.0.0:
   version "3.0.1"

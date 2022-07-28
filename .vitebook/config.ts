@@ -1,5 +1,6 @@
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { svelteMarkdownPlugin } from '@vitebook/markdown-svelte/node';
+import { shikiMarkdownPlugin } from '@vitebook/markdown-shiki/node';
 import { clientPlugin, defineConfig } from '@vitebook/client/node';
 import { defaultThemePlugin, DefaultThemeConfig } from '@vitebook/theme-default/node';
 import preprocess from 'svelte-preprocess';
@@ -12,6 +13,7 @@ export default defineConfig<DefaultThemeConfig>({
   },
   plugins: [
     svelteMarkdownPlugin(),
+    shikiMarkdownPlugin(),
     clientPlugin({ appFile: 'App.svelte' }),
     defaultThemePlugin(),
     svelte({
