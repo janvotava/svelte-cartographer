@@ -1,38 +1,13 @@
-# create-svelte
+# Svelte Cartographer (Google Maps component)
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+A friendly Svelte addon for working with Google Maps.
 
-## Creating a project
+## Demo
 
-If you're seeing this, you've probably already done this step. Congrats!
+Set `VITE_GMAPS_API_KEY=xxx` in your `.env` file to the API key generated in the Google Maps console.
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+After that run and access Vitebook with the sample components.
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+    yarn install
+    yarn vitebook:dev
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
