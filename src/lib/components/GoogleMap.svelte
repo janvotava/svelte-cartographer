@@ -1,7 +1,9 @@
 <script lang="ts">
-  import { key } from "$lib/contexts"
+  import { key, type Context } from "$lib/contexts"
+  import type { GoogleMaybe, GoogleMapMaybe } from "$lib/types"
   import { Loader } from "@googlemaps/js-api-loader"
   import { onMount, setContext, tick } from "svelte"
+  import { writable } from "svelte/store"
   import GoogleMapCanvas from "./GoogleMapCanvas.svelte"
 
   export let apiKey: string
@@ -9,12 +11,14 @@
   export let lng: number
   export let zoom = 4
 
+  let google = writable<GoogleMaybe>()
+
   // NOTE: Parent component can bind to this property to access
   // the map object.
-  export let map: google.maps.Map | undefined = undefined
+  export let map = writable<GoogleMapMaybe>()
 
   let isDefaultContainerVisible = false
-  let container: HTMLDivElement | undefined
+  let canvas: HTMLDivElement | undefined
 
   async function load() {
     const loader = new Loader({
@@ -22,7 +26,7 @@
       apiKey,
       libraries: ["places"],
     })
-    const google = await loader.load()
+    $google = await loader.load()
 
     const mapOptions = {
       center: {
@@ -32,24 +36,24 @@
       zoom,
     }
 
-    if (!container) {
+    if (!canvas) {
       isDefaultContainerVisible = true
       await tick()
     }
 
-    if (!container) {
+    if (!canvas) {
       throw new Error("Failed to inject default container.")
     }
 
-    map = new google.maps.Map(container, mapOptions)
+    $map = new $google.maps.Map(canvas, mapOptions)
   }
 
   function updateOptions(lat: number, lng: number, zoom: number) {
-    if (!map) {
+    if (!$map) {
       return
     }
 
-    map.setOptions({
+    $map.setOptions({
       center: {
         lat,
         lng,
@@ -60,12 +64,15 @@
 
   onMount(load)
 
-  setContext(key, {
+  setContext<Context>(key, {
+    getGoogle() {
+      return google
+    },
     getMap() {
       return map
     },
-    setCanvas(canvas: HTMLDivElement) {
-      container = canvas
+    setCanvas(newCanvas: HTMLDivElement) {
+      canvas = newCanvas
     },
   })
 
