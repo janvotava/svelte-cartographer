@@ -1,5 +1,5 @@
 [build]
-  command = "npm run vitebook:build"
+  command = "yarn vitebook:build"
   publish = ".vitebook/dist"
 
 [build.environment]
