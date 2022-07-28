@@ -1,8 +1,10 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 
+const isViteBook = process.argv.join().includes("vitebook")
+
 /** @type {import('vite').UserConfig} */
 const config = {
-	plugins: [sveltekit()]
+	plugins: [!isViteBook && sveltekit()],
 };
 
 export default config;
