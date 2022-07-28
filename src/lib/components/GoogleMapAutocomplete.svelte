@@ -27,4 +27,4 @@
 </script>
 
 <!-- TODO: Allow to set custom Input element -->
-<input bind:this={inputElement} />
+<input bind:this={inputElement} {...$$restProps} />
