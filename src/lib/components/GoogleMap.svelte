@@ -1,8 +1,8 @@
 <script lang="ts">
   import { key } from "$lib/contexts"
-
   import { Loader } from "@googlemaps/js-api-loader"
-  import { onMount, setContext } from "svelte"
+  import { onMount, setContext, tick } from "svelte"
+  import GoogleMapCanvas from "./GoogleMapCanvas.svelte"
 
   export let apiKey: string
   export let lat: number
@@ -13,7 +13,8 @@
   // the map object.
   export let map: google.maps.Map | undefined = undefined
 
-  let container: HTMLDivElement
+  let isDefaultContainerVisible = false
+  let container: HTMLDivElement | undefined
 
   async function load() {
     const loader = new Loader({
@@ -31,6 +32,15 @@
       zoom,
     }
 
+    if (!container) {
+      isDefaultContainerVisible = true
+      await tick()
+    }
+
+    if (!container) {
+      throw new Error("Failed to inject default container.")
+    }
+
     map = new google.maps.Map(container, mapOptions)
   }
 
@@ -44,31 +54,26 @@
         lat,
         lng,
       },
-      zoom
+      zoom,
     })
   }
 
   onMount(load)
 
   setContext(key, {
-    getMap: () => map,
+    getMap() {
+      return map
+    },
+    setCanvas(canvas: HTMLDivElement) {
+      container = canvas
+    },
   })
 
   $: updateOptions(lat, lng, zoom)
 </script>
 
-{#if map}
-  <slot />
+<slot />
+
+{#if isDefaultContainerVisible}
+  <GoogleMapCanvas />
 {/if}
-
-<slot name="container">
-  <div class="container" bind:this={container} />
-</slot>
-
-<style>
-  .container {
-    width: 100%;
-    height: 100%;
-    min-height: 340px;
-  }
-</style>
