@@ -16,18 +16,26 @@
 <Variant name="Default container">
   <GoogleMap
     apiKey={import.meta.env.VITE_GMAPS_API_KEY}
-    lat={13.736717}
-    lng={100.523186}
-    zoom={12}
+    options={{
+      center: {
+        lat: 13.736717,
+        lng: 100.523186,
+      },
+      zoom: 12,
+    }}
   />
 </Variant>
 
 <Variant name="Custom container">
   <GoogleMap
     apiKey={import.meta.env.VITE_GMAPS_API_KEY}
-    lat={13.736717}
-    lng={100.523186}
-    zoom={12}
+    options={{
+      center: {
+        lat: 13.736717,
+        lng: 100.523186,
+      },
+      zoom: 12,
+    }}
   >
     <GoogleMapCanvas class="shadow-2xl shadow-pink-300 w-96 h-96" />
   </GoogleMap>

@@ -1,15 +1,13 @@
 <script lang="ts">
   import { key, type Context } from "$lib/contexts"
-  import type { GoogleMaybe, GoogleMapMaybe } from "$lib/types"
+  import type { GoogleMaybe, GoogleMapMaybe, GoogleMapsOptions } from "$lib/types"
   import { Loader } from "@googlemaps/js-api-loader"
   import { onMount, setContext, tick } from "svelte"
   import { writable } from "svelte/store"
   import GoogleMapCanvas from "./GoogleMapCanvas.svelte"
 
   export let apiKey: string
-  export let lat: number
-  export let lng: number
-  export let zoom = 4
+  export let options: GoogleMapsOptions
 
   let google = writable<GoogleMaybe>()
 
@@ -28,14 +26,6 @@
     })
     $google = await loader.load()
 
-    const mapOptions = {
-      center: {
-        lat,
-        lng,
-      },
-      zoom,
-    }
-
     if (!canvas) {
       isDefaultContainerVisible = true
       await tick()
@@ -45,21 +35,15 @@
       throw new Error("Failed to inject default container.")
     }
 
-    $map = new $google.maps.Map(canvas, mapOptions)
+    $map = new $google.maps.Map(canvas, options)
   }
 
-  function updateOptions(lat: number, lng: number, zoom: number) {
+  function updateOptions(options: GoogleMapsOptions) {
     if (!$map) {
       return
     }
 
-    $map.setOptions({
-      center: {
-        lat,
-        lng,
-      },
-      zoom,
-    })
+    $map.setOptions(options)
   }
 
   onMount(load)
@@ -76,7 +60,7 @@
     },
   })
 
-  $: updateOptions(lat, lng, zoom)
+  $: updateOptions(options)
 </script>
 
 <slot />

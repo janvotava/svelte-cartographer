@@ -14,6 +14,13 @@
 
   let lat = 13.736717
   let lng = 100.523186
+  let options = {
+    center: {
+      lat,
+      lng,
+    },
+    zoom: 12,
+  }
 
   function onPlaceChange(place: google.maps.places.PlaceResult) {
     if (place.geometry) {
@@ -28,7 +35,7 @@
 </script>
 
 <Variant name="Autocomplete with map context">
-  <GoogleMap apiKey={import.meta.env.VITE_GMAPS_API_KEY} {lat} {lng} zoom={12}>
+  <GoogleMap apiKey={import.meta.env.VITE_GMAPS_API_KEY} {options}>
     <GoogleMapAutocomplete
       on:change={(e) => onPlaceChange(e.detail)}
       class="text-xl mb-4 px-6 py-4 w-full"
