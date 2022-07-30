@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-.page {
+.__vbk__.page {
   height: 100%;
   width: 100%
 }
 
-.page__container {
+.__vbk__.page__container {
   height: 100%;
   width: 100%
 }
