@@ -3,7 +3,7 @@
   "version": "0.0.6",
   "homepage": "https://github.com/janvotava/svelte-cartographer",
   "scripts": {
-    "dev": "vite dev",
+    "dev": "vitebook dev",
     "build": "vite build",
     "package": "svelte-kit package",
     "preview": "vite preview",
