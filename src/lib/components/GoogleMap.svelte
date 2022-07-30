@@ -1,13 +1,13 @@
 <script lang="ts">
   import { key, type Context } from "$lib/contexts"
-  import type { GoogleMaybe, GoogleMapMaybe, GoogleMapsOptions } from "$lib/types"
+  import type { GoogleMaybe, GoogleMapMaybe, GoogleMapOptions } from "$lib/types"
   import { Loader } from "@googlemaps/js-api-loader"
   import { onMount, setContext, tick } from "svelte"
   import { writable } from "svelte/store"
   import GoogleMapCanvas from "./GoogleMapCanvas.svelte"
 
   export let apiKey: string
-  export let options: GoogleMapsOptions
+  export let options: GoogleMapOptions
 
   let google = writable<GoogleMaybe>()
 
@@ -38,7 +38,7 @@
     $map = new $google.maps.Map(canvas, options)
   }
 
-  function updateOptions(options: GoogleMapsOptions) {
+  function updateOptions(options: GoogleMapOptions) {
     if (!$map) {
       return
     }
