@@ -1,10 +1,16 @@
 <script lang="ts">
   import { key, type Context } from "$lib/contexts"
-  import type { GoogleMaybe, GoogleMapMaybe, GoogleMapOptions } from "$lib/types"
+  import type {
+    GoogleMaybe,
+    GoogleMapMaybe,
+    GoogleMapOptions,
+  } from "$lib/types"
   import { Loader } from "@googlemaps/js-api-loader"
-  import { onMount, setContext, tick } from "svelte"
+  import { createEventDispatcher, onMount, setContext, tick } from "svelte"
   import { writable } from "svelte/store"
   import GoogleMapCanvas from "./GoogleMapCanvas.svelte"
+
+  const dispatch = createEventDispatcher()
 
   export let apiKey: string
   export let options: GoogleMapOptions
@@ -36,6 +42,10 @@
     }
 
     $map = new $google.maps.Map(canvas, options)
+
+    $map.addListener("click", (event: google.maps.MapMouseEvent) => {
+      dispatch("click", event)
+    })
   }
 
   function updateOptions(options: GoogleMapOptions) {
