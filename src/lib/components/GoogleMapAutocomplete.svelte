@@ -11,6 +11,9 @@
   // in `place_changed` event though. This value modification should be managed outside of this
   // addon for now.
   export let value: string | undefined = undefined
+
+  export let placeholder: string | undefined = undefined
+
   let inputElement: HTMLInputElement
 
   const dispatch = createEventDispatcher()
@@ -31,4 +34,4 @@
 </script>
 
 <!-- TODO: Allow to set custom Input element -->
-<input bind:this={inputElement} type="text" bind:value {...$$restProps} />
+<input bind:this={inputElement} type="text" bind:value {placeholder} {...$$restProps} />
