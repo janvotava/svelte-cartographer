@@ -10,7 +10,7 @@
   // NOTE: Bindable to get current value in the input. It does not manage switch on autocomplete
   // in `place_changed` event though. This value modification should be managed outside of this
   // addon for now.
-  export let value: string | undefined = undefined
+  export let value: string | null | undefined = undefined
 
   export let placeholder: string | undefined = undefined
 
