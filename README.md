@@ -9,5 +9,5 @@ setting`VITE_GMAPS_API_KEY=xxx` in your `.env` file to the API key generated in 
 
 After that run and access Vitebook with the sample components using these commands:
 
-    yarn install
-    yarn vitebook:dev
+    pnpm install
+    pnpm vitebook:dev
