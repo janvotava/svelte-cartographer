@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vitebook dev",
     "build": "vite build",
-    "package": "svelte-kit package",
+    "package": "svelte-package",
     "preview": "vite preview",
     "prepare": "svelte-kit sync",
     "test": "playwright test",
@@ -21,6 +21,7 @@
     "@playwright/test": "^1.22.2",
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
+    "@sveltejs/package": "1.0.0-next.5",
     "@sveltejs/vite-plugin-svelte": "^1.0.1",
     "@types/google.maps": "^3.49.2",
     "@typescript-eslint/eslint-plugin": "^5.27.0",
